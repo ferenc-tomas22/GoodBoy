@@ -1,7 +1,7 @@
 import React from 'react'
 import { useShelters, ShelterType } from '../../../AppContext'
 import { useTranslation } from 'react-i18next'
-import { Form, ListGroup, Row, Button } from 'react-bootstrap'
+import { Form, ListGroup, Row } from 'react-bootstrap'
 import { Loader } from '../../utils/Loader'
 import { motion } from 'framer-motion'
 
@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 const specificShelter = 'specificShelter'
 const entireFoundation = 'entireFoundation'
 
-const API_GET_SHELTERS = import.meta.env.VITE_API_GET_SHELTERS as string
+const API_GET_SHELTERS = import.meta.env.VITE_API_GET_SHELTERS
 
 const FirstFormStep = () => {
   const { t } = useTranslation()

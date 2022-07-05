@@ -1,13 +1,15 @@
 import React from 'react'
 import { useShelters, defaultFormDataStructure } from '../../../AppContext'
 import { useTranslation } from 'react-i18next'
-import { Form, Row, Button } from 'react-bootstrap'
+import { Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Loader } from '../../utils/Loader'
 import { motion } from 'framer-motion'
 
 // Constants
 const formName = 'checkInformationForm'
+
+const API_POST_SHELTERS = import.meta.env.VITE_API_POST_SHELTERS
 
 const ThirdFormStep = () => {
   const { t } = useTranslation()
@@ -28,7 +30,7 @@ const ThirdFormStep = () => {
     }
     setLoading(true)
     try {
-      const response = await fetch('https://httpbin.org/post', {
+      const response = await fetch(API_POST_SHELTERS, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

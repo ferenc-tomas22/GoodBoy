@@ -1,7 +1,7 @@
 import React from 'react'
 import { useShelters } from '../../../AppContext'
 import { useTranslation } from 'react-i18next'
-import { Form, InputGroup, Row, Button } from 'react-bootstrap'
+import { Form, InputGroup, Row } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 
 // Constants
