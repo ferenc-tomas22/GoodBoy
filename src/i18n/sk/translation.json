@@ -1,0 +1,32 @@
+{
+  "foundationName": "Good Boy",
+  "foundationDesc": "Nadácia na podporu slovenských útulkov pre psy",
+
+  "donateTitle": "Vyberte si možnosť, ako chcete pomôcť",
+  "specificShelter": "Chcem finančne prispieť konkrétnemu útulku",
+  "entireFoundation": "Chcem finančne prispieť celej nadácií",
+  
+  "contributionAmount": [ "5", "10", "20", "50", "100" ],
+  "currency": "€",
+
+  "personalInfo": "Potrebujeme od Vás zopár informácií",
+  "supportType": "Akou formou chcem pomôcť",
+  "shelterType": "Najviac mi záleží na útulku",
+  "amountType": "Suma ktorou chcem pomôcť",
+  "processingPersonalInfo": "Súhlasím so spracovaním mojich osobných údajov",
+  "thankYou": "Veľmi pekne ďakujeme za podporu",
+
+  "enterFirstNamePlaceholder": "Zadajte svoje meno",
+  "enterLastNamePlaceholder": "Zadajte svoje priezvisko",
+  "enterEmailPlaceholder": "Zadajte svoj Email",
+  "enterPhonePlaceholder": "Zadajte Váše telefónné číslo",
+  "emptyField": "Pole {{name}} je prázdne, prosím vyplňte ho",
+
+  "firstName": "Meno",
+  "lastName": "Priezvisko",
+  "email": "Email",
+  "phone": "Telefónné číslo",
+  "submit": "Odoslať formulár",
+  "next": "Pokračovať",
+  "back": "Späť"
+}
