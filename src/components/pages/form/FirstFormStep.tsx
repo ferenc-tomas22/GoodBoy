@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 const specificShelter = 'specificShelter'
 const entireFoundation = 'entireFoundation'
 
-const API_GET_SHELTERS = import.meta.env.VITE_API_GET_SHELTERS
+const API_GET_SHELTERS = import.meta.env.VITE_API_GET_SHELTERS as string
 
 const FirstFormStep = () => {
   const { t } = useTranslation()

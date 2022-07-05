@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 // Constants
 const formName = 'checkInformationForm'
 
-const API_POST_SHELTERS = import.meta.env.VITE_API_POST_SHELTERS
+const API_POST_SHELTERS = import.meta.env.VITE_API_POST_SHELTERS as string
 
 const ThirdFormStep = () => {
   const { t } = useTranslation()
