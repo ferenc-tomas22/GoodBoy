@@ -98,8 +98,8 @@ const ThirdFormStep = () => {
           <Form.Check
             label={ t('processingPersonalInfo') }
             type='checkbox'
-            value={ formData.processingPersonalData }
-            onChange={ (e: any) => setFormData({ ...formData, processingPersonalData: e.target.value }) }
+            checked={ formData.processingPersonalData }
+            onChange={ (e: any) => setFormData({ ...formData, processingPersonalData: e.target.checked }) }
             required
           />
         </Form.Group>
