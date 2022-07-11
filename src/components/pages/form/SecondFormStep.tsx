@@ -21,13 +21,12 @@ const SecondFormStep = () => {
 
   const validateForm = () => {
     const warehouseForm = document.forms.namedItem(formName)
-    if (warehouseForm) {
-      if (!warehouseForm.checkValidity()) {
-        setFormValidate(true)
-        return
-      }
-      setCurrentFormStep(currentFormStep + 1)
+    if (!warehouseForm) return
+    if (!warehouseForm.checkValidity()) {
+      setFormValidate(true)
+      return
     }
+    setCurrentFormStep(currentFormStep + 1)
   }
 
   return (

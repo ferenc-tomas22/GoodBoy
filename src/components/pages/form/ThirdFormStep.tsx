@@ -23,7 +23,8 @@ const ThirdFormStep = () => {
   const [ loading, setLoading ] = React.useState(false)
 
   const submitForm = async () => {
-    const personalInfoForm = document.forms[ formName ] as HTMLFormElement
+    const personalInfoForm = document.forms.namedItem(formName)
+    if (!personalInfoForm) return
     if (!personalInfoForm.checkValidity()) {
       setFormValidate(true)
       return
