@@ -20,12 +20,14 @@ const SecondFormStep = () => {
   const [ formValidate, setFormValidate ] = React.useState(false)
 
   const validateForm = () => {
-    const warehouseForm = document.forms[ formName ] as HTMLFormElement
-    if (!warehouseForm.checkValidity()) {
-      setFormValidate(true)
-      return
+    const warehouseForm = document.forms.namedItem(formName)
+    if (warehouseForm) {
+      if (!warehouseForm.checkValidity()) {
+        setFormValidate(true)
+        return
+      }
+      setCurrentFormStep(currentFormStep + 1)
     }
-    setCurrentFormStep(currentFormStep + 1)
   }
 
   return (
