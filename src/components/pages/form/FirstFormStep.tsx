@@ -14,7 +14,7 @@ const API_GET_SHELTERS = import.meta.env.VITE_API_GET_SHELTERS as string
 const FirstFormStep = () => {
   const { t } = useTranslation()
   const contributionAmounts = t('contributionAmount', { returnObjects: true }) as string[]
-  const { shelters, setShelters, formData, setFormData, currentFormStep, setCurrentFormStep } = useShelters()
+  const { shelters, setShelters, formData, setFormData, setCurrentFormStep } = useShelters()
   const [ loading, setLoading ] = React.useState(false)
 
   React.useEffect(() => {
@@ -27,11 +27,11 @@ const FirstFormStep = () => {
         const shelters = await response.json() as { shelters: ShelterType[] }
         if (shelters.shelters.length > 0) {
           setShelters(shelters.shelters)
-          setFormData({
-            ...formData,
+          setFormData(fd => ({
+            ...fd,
             selectedShelterId: shelters.shelters[ 0 ].id,
             contributionAmount: contributionAmounts[ 0 ],
-          })
+          }))
         }
       } catch (err) {
         console.error(err)
@@ -61,7 +61,7 @@ const FirstFormStep = () => {
                     active={ !formData.supportEntireFoundation }
                     onClick={ (e: any) => {
                       e.preventDefault()
-                      setFormData({ ...formData, supportEntireFoundation: false })
+                      setFormData(fd => ({ ...fd, supportEntireFoundation: false }))
                     } }
                   >
                     <Row className='text-center'>
@@ -83,7 +83,7 @@ const FirstFormStep = () => {
                     active={ formData.supportEntireFoundation }
                     onClick={ (e: any) => {
                       e.preventDefault()
-                      setFormData({ ...formData, supportEntireFoundation: true })
+                      setFormData(fd => ({ ...fd, supportEntireFoundation: true }))
                     } }
                   >
                     <Row className='text-center'>
@@ -109,7 +109,7 @@ const FirstFormStep = () => {
                         value={ formData.selectedShelterId ?? '' }
                         onChange={ (e: any) => {
                           e.preventDefault()
-                          setFormData({ ...formData, selectedShelterId: parseInt(e.target.value) })
+                          setFormData(fd => ({ ...fd, selectedShelterId: parseInt(e.target.value) }))
                         } }
                       >
                         {
@@ -138,7 +138,7 @@ const FirstFormStep = () => {
                         active={ formData.contributionAmount === amount }
                         onClick={ (e: any) => {
                           e.preventDefault()
-                          setFormData({ ...formData, contributionAmount: amount })
+                          setFormData(fd => ({ ...fd, contributionAmount: amount }))
                         } }
                       >
                         { amount + t('currency') }
@@ -153,7 +153,7 @@ const FirstFormStep = () => {
                 initial={{ x: '100vw' }}
                 animate={{ x: 0 }}
                 className='btn btn-success btn-sm w-25'
-                onClick={ () => setCurrentFormStep(currentFormStep + 1) }
+                onClick={ () => setCurrentFormStep(currentFormStep => currentFormStep + 1) }
               >
                 { t('next') }
               </motion.button>

@@ -28,16 +28,16 @@ interface SheltersState {
   shelters: ShelterType[],
   formData: FormDataType,
   currentFormStep: number,
-  setShelters: (shelters: ShelterType[]) => void,
-  setFormData: (formData: FormDataType) => void,
-  setCurrentFormStep: (currentFormStep: number) => void
+  setShelters: (sh: ShelterType[] | ((sh: ShelterType[]) => ShelterType[])) => void,
+  setFormData: (fd: FormDataType | ((fd: FormDataType) => FormDataType)) => void,
+  setCurrentFormStep: (cs: number | ((cs: number) => number)) => void,
 }
 
-export const useShelters = create<SheltersState>(set => ({
+export const useShelters = create<SheltersState>((set, get) => ({
   shelters: [],
   formData: defaultFormDataStructure,
   currentFormStep: 1,
-  setShelters: shelters => set({ shelters }),
-  setFormData: formData => set({ formData }),
-  setCurrentFormStep: currentFormStep => set({ currentFormStep }),
+  setShelters: sh => typeof sh === 'function' ? set({ shelters: sh(get().shelters) }) : set({ shelters: sh }),
+  setFormData: fd => typeof fd === 'function' ? set({ formData: fd(get().formData) }) : set({ formData: fd }),
+  setCurrentFormStep: cs => typeof cs === 'function' ? set({ currentFormStep: cs(get().currentFormStep) }): set({ currentFormStep: cs }),
 }))

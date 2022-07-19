@@ -16,7 +16,6 @@ const ThirdFormStep = () => {
   const navigate  = useNavigate()
   const formData = useShelters(state => state.formData)
   const shelters = useShelters(state => state.shelters)
-  const currentFormStep = useShelters(state => state.currentFormStep)
   const setFormData = useShelters(state => state.setFormData)
   const setCurrentFormStep = useShelters(state => state.setCurrentFormStep)
   const [ formValidate, setFormValidate ] = React.useState(false)
@@ -99,7 +98,7 @@ const ThirdFormStep = () => {
             label={ t('processingPersonalInfo') }
             type='checkbox'
             checked={ formData.processingPersonalData }
-            onChange={ (e: any) => setFormData({ ...formData, processingPersonalData: e.target.checked }) }
+            onChange={ (e: any) => setFormData(fd => ({ ...fd, processingPersonalData: e.target.checked })) }
             required
           />
         </Form.Group>
@@ -109,7 +108,7 @@ const ThirdFormStep = () => {
           initial={{ x: '-100vw' }}
           animate={{ x: 0 }}
           className='btn btn-secondary btn-sm w-25'
-          onClick={ () => setCurrentFormStep(currentFormStep - 1) }
+          onClick={ () => setCurrentFormStep(currentFormStep => currentFormStep - 1) }
         >
           { t('back') }
         </motion.button>

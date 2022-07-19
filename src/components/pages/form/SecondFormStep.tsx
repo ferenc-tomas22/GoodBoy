@@ -15,7 +15,6 @@ const SecondFormStep = () => {
   const { t } = useTranslation()
   const formData = useShelters(state => state.formData)
   const setFormData = useShelters(state => state.setFormData)
-  const currentFormStep = useShelters(state => state.currentFormStep)
   const setCurrentFormStep = useShelters(state => state.setCurrentFormStep)
   const [ formValidate, setFormValidate ] = React.useState(false)
 
@@ -26,7 +25,7 @@ const SecondFormStep = () => {
       setFormValidate(true)
       return
     }
-    setCurrentFormStep(currentFormStep + 1)
+    setCurrentFormStep(currentFormStep => currentFormStep + 1)
   }
 
   return (
@@ -46,7 +45,7 @@ const SecondFormStep = () => {
               type='text'
               placeholder={ t('enterFirstNamePlaceholder') }
               value={ formData.firstName }
-              onChange={ (e: { target: { value: string } }) => setFormData({ ...formData, firstName: e.target.value }) }
+              onChange={ (e: { target: { value: string } }) => setFormData(fd => ({ ...fd, firstName: e.target.value })) }
               required
             />
             <Form.Control.Feedback type='invalid'>
@@ -61,7 +60,7 @@ const SecondFormStep = () => {
               type='text'
               placeholder={ t('enterLastNamePlaceholder') }
               value={ formData.lastName }
-              onChange={ (e: { target: { value: string } }) => setFormData({ ...formData, lastName: e.target.value }) }
+              onChange={ (e: { target: { value: string } }) => setFormData(fd => ({ ...fd, lastName: e.target.value })) }
               required
             />
             <Form.Control.Feedback type='invalid'>
@@ -77,7 +76,7 @@ const SecondFormStep = () => {
               placeholder={ t('enterEmailPlaceholder') }
               pattern={ emailPattern }
               value={ formData.email }
-              onChange={ (e: { target: { value: string } }) => setFormData({ ...formData, email: e.target.value }) }
+              onChange={ (e: { target: { value: string } }) => setFormData(fd => ({ ...fd, email: e.target.value })) }
               required
             />
             <Form.Control.Feedback type='invalid'>
@@ -124,7 +123,7 @@ const SecondFormStep = () => {
                 <Form.Select
                   className='border-0'
                   size='sm'
-                  onChange={ (e: { target: { value: string } }) => setFormData({ ...formData, phonePrefix: e.target.value }) }
+                  onChange={ (e: { target: { value: string } }) => setFormData(fd => ({ ...fd, phonePrefix: e.target.value })) }
                 >
                   <option value={ skPhonePrefix }>
                     { skPhonePrefix }
@@ -140,7 +139,7 @@ const SecondFormStep = () => {
                   pattern={ phonePattern }
                   placeholder={ t('enterPhonePlaceholder') }
                   value={ formData.phone }
-                  onChange={ (e: { target: { value: string } }) => setFormData({ ...formData, phone: e.target.value }) }
+                  onChange={ (e: { target: { value: string } }) => setFormData(fd => ({ ...fd, phone: e.target.value })) }
                 />
             </InputGroup>
           </Form.Group>
@@ -151,7 +150,7 @@ const SecondFormStep = () => {
           initial={{ x: '-100vw' }}
           animate={{ x: 0 }}
           className='btn btn-secondary btn-sm w-25'
-          onClick={ () => setCurrentFormStep(currentFormStep - 1) }
+          onClick={ () => setCurrentFormStep(currentFormStep => currentFormStep - 1) }
         >
           { t('back') }
         </motion.button>
